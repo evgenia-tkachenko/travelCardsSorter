@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Travel Cards Sorter</title>
+	<script src="travelSort.js"></script>
+
+	<style type="text/css">
+		body, html {
+			margin: 0;
+			padding: 0;
+			background: whitesmoke;
+		}
+		#container {
+			width: 100%;
+			height: 100%;
+		}
+		.routeHolder {
+			display: block;
+			white-space: pre-wrap;
+			margin: 50px auto;
+			padding: 20px;
+			width: 500px;
+			background: lightblue;
+			font-size: 20px;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="container">
+	</div>
+
+	<script type="text/javascript">
+
+		var cards = [
+			{
+				start: {
+					city: "Barcelona",
+					country: "ES"
+				},
+				finish: {
+					city: "Gerona Airport",
+					country: "ES"
+				},
+				transport: {
+					type: "airport bus"
+				}
+			},
+			{
+				start: {
+					city: "Madrid",
+					country: "ES"
+				},
+				finish: {
+					city: "Barcelona",
+					country: "ES"
+				},
+				transport: {
+					type: "train",
+					number: "78A",
+					seat: "45B"
+				}
+			},
+			{
+				start: {
+					city: "Stockholm",
+					country: "SE"
+				},
+				finish: {
+					city: "New York JFK",
+					country: "US"
+				},
+				transport: {
+					type: "flight",
+					number: "SK22",
+					gate: "22",
+					seat: "7B",
+					other: "Baggage will be automatically transferred from your last leg"
+				}
+			},
+			{
+				start: {
+					city: "Gerona Airport",
+					country: "ES"
+				},
+				finish: {
+					city: "Stockholm",
+					country: "SE"
+				},
+				transport: {
+					type: "flight",
+					number: "SK455",
+					gate: "45B",
+					seat: "3A",
+					other: "Baggage drop at ticket counter 344"
+				}
+			}
+		]
+
+		var myRoute = new TravelSort(cards);
+		var text = myRoute.createDescription();
+
+		var routeHolder = document.createElement('div');
+		routeHolder.className = "routeHolder";
+		routeHolder.textContent = text;
+
+		document.getElementById('container').appendChild(routeHolder);
+		
+	</script>
+
+</body>
+</html>
